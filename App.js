@@ -1,21 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Archive from './screens/Archive';
+import Home from './screens/Home';
+import { MainProvider } from './screens/MainContext';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function App() {
+const Tab = createBottomTabNavigator()
+
+const App = () => {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <MainProvider>
+      <StatusBar barStyle="dark-content" backgroundColor="#00aaff" />
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ color }) => {
+              let iconName;
+              if (route.name === "home") {
+                iconName = 'home-city-outline'
+              } else if (route.name === "archive") {
+                iconName = "city"
+              }
+              return <MaterialCommunityIcons name={iconName} size={25} color={color} />
+            }
+          })}
+          tabBarOptions={{
+            activeTintColor: "white",
+            inactiveTintColor: "gray",
+            activeBackgroundColor: "#00aaff",
+            inactiveBackgroundColor: "#00aaff"
+          }}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        >
+          <Tab.Screen name="home" component={Home}
+          />
+          <Tab.Screen name="archive" component={Archive} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </MainProvider>
+  );
+};
+
+export default App;
