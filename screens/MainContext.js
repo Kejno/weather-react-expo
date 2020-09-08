@@ -17,6 +17,7 @@ export const MainProvider = ({ children }) => {
     icon: "",
     coord: "",
     date: "",
+    key: null
   }
 
 
@@ -53,7 +54,8 @@ export const MainProvider = ({ children }) => {
         coord: {
           lat: coord.lat,
           lon: coord.lon
-        }
+        },
+        key: `${Date.now()}.toString()`
       }
 
       setInfo({ ...fetchedInfo, loading: false })
@@ -64,8 +66,6 @@ export const MainProvider = ({ children }) => {
 
     } catch (err) {
       alert(err.message)
-    } finally {
-      console.log('FINAL')
     }
   }
 

@@ -1,15 +1,27 @@
 import React, { useContext } from 'react';
 import { Card, Title } from 'react-native-paper';
 import { View, Image } from 'react-native'
-import moment from 'moment';
 import Header from './Header'
-import AsyncStorage from '@react-native-community/async-storage';
 import { MainContext } from './MainContext';
 import { Loader } from './Loader'
+import { fieldItems } from './constants';
 
 export default Home = () => {
 
     const info = useContext(MainContext)
+
+    const styled = {
+        styledTitle: {
+            color: '#00aaff',
+            fontSize: 30,
+        },
+        styledContent: {
+            margin: 5,
+            padding: 12
+        },
+    }
+
+    const { styledTitle, styledContent } = styled
 
     return (
         <View style={{ flex: 1 }}>
@@ -18,64 +30,36 @@ export default Home = () => {
             {info.loading
                 ? <Loader />
                 : <View>
+
                     <View style={{ alignItems: "center" }}>
-                        <Title
-                            style={{
-                                color: '#00aaff',
-                                marginTop: 30,
-                                fontSize: 30,
-                            }}>
+                        <Title style={{ ...styledTitle, marginTop: 30 }}>
                             {info.country}
                         </Title>
-                        <Title
-                            style={{
-                                color: '#00aaff',
-                                marginTop: 10,
-                                fontSize: 30,
-                            }}>
+                        <Title style={{ ...styledTitle, marginTop: 10 }}>
                             {info.city}
                         </Title>
                         <Image
-                            style={{
-                                width: 120,
-                                height: 80
-                            }}
+                            style={{ width: 120, height: 80 }}
                             source={{ uri: "https://openweathermap.org/img/w/" + info.icon + ".png" }}
                         />
                         <Title
-                            style={{
-                                color: '#00aaff',
-                                marginBottom: 20,
-                                fontSize: 20
-                            }}>
+                            style={{ ...styledTitle, marginBottom: 20 }}>
                             {info.desc}
                         </Title>
 
                     </View>
 
-                    <Card style={{
-                        margin: 5,
-                        padding: 12
-                    }}>
-                        <Title style={{ color: "#00aaff" }}>Температура - {`${info.temp}\u00b0C`}</Title>
+                    <Card style={styledContent}>
+                        <Title style={{ color: "#00aaff" }}>{`${fieldItems[0]} - ${info.temp}\u00b0C`}</Title>
                     </Card>
-                    <Card style={{
-                        margin: 5,
-                        padding: 12
-                    }}>
-                        <Title style={{ color: "#00aaff" }}>Влажность - {`${info.humidity}%`}</Title>
+                    <Card style={styledContent}>
+                        <Title style={{ color: "#00aaff" }}>{`${fieldItems[1]} - ${info.humidity}%`}</Title>
                     </Card>
-                    <Card style={{
-                        margin: 5,
-                        padding: 12
-                    }}>
-                        <Title style={{ color: "#00aaff" }}>Ширина-  {`${info.coord.lat}\u00b0`}</Title>
+                    <Card style={styledContent}>
+                        <Title style={{ color: "#00aaff" }}>{`${fieldItems[2]} - ${info.coord.lat}\u00b0`}</Title>
                     </Card>
-                    <Card style={{
-                        margin: 5,
-                        padding: 12
-                    }}>
-                        <Title style={{ color: "#00aaff" }}>Долгота-  {`${info.coord.lon}\u00b0`}</Title>
+                    <Card style={styledContent}>
+                        <Title style={{ color: "#00aaff" }}>{`${fieldItems[3]} - ${info.coord.lon}\u00b0`}</Title>
                     </Card>
 
                 </View>
