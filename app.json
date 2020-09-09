@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "weather-react-native-expo",
+    "name": "Weather App",
     "slug": "weather-react-native-expo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "android": {
+      "package": "com.kejno.weatherreactnativeexpo"
+    },
+    "description": ""
   }
 }

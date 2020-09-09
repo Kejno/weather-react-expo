@@ -2,7 +2,7 @@ import moment from 'moment';
 
 import { API_KEY } from '@env'
 
-const weatherMapCommonUrl = 'http://api.openweathermap.org/data/2.5';
+const weatherMapCommonUrl = 'https://api.openweathermap.org/data/2.5';
 
 export const weatherUrl = `${weatherMapCommonUrl}/weather?APPID=${API_KEY}`;
 

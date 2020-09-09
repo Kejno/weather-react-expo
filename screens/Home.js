@@ -6,7 +6,7 @@ import { MainContext } from './MainContext';
 import { Loader } from './Loader'
 import { fieldItems } from './constants';
 
-export default Home = () => {
+const Home = () => {
 
     const info = useContext(MainContext)
 
@@ -69,3 +69,4 @@ export default Home = () => {
     )
 }
 
+export default Home;

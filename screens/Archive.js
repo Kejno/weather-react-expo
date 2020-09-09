@@ -6,7 +6,7 @@ import { Loader } from './Loader';
 import AsyncStorage from '@react-native-community/async-storage';
 import { fieldItems } from './constants';
 
-export default Archive = () => {
+const Archive = () => {
 
     const [allData, setAllData] = useState(null);
     const [indexId, setIndexId] = useState(0);
@@ -57,24 +57,25 @@ export default Archive = () => {
                 transparent={true}
                 visible={show}
                 animationType="fade"
+                style={{ position: 'fixed', display: show ? 'block' : 'none' }}
             >
                 <View style={{ backgroundColor: "#000000aa", flex: 1 }}>
-                    <View style={{ backgroundColor: "#ffffff", margin: 50, marginBottom: 300, padding: 40, borderRadius: 10, flex: 1 }}>
-                        <View style={{ color: '#00aaff', fontSize: 20 }}>
+                    <View style={{ backgroundColor: "#ffffff", margin: 50, marginBottom: 360, padding: 30, borderRadius: 10, flex: 1 }}>
+                        <View>
 
                             {allData
 
                                 ? <>
-                                    <Card style={{ margin: 5, padding: 8 }}>
+                                    <Card style={{ marginBottom: 5, padding: 8 }}>
                                         <Title style={{ color: "#00aaff" }}>{`${fieldItems[0]} - ${allData[indexId].temp}\u00b0C`}</Title>
                                     </Card>
-                                    <Card style={{ margin: 5, padding: 8 }}>
+                                    <Card style={{ marginBottom: 5, padding: 8 }}>
                                         <Title style={{ color: "#00aaff" }}>{`${fieldItems[1]} - ${allData[indexId].humidity}%`}</Title>
                                     </Card>
-                                    <Card style={{ margin: 5, padding: 8 }}>
+                                    <Card style={{ marginBottom: 5, padding: 8 }}>
                                         <Title style={{ color: "#00aaff" }}>{`${fieldItems[2]} - ${allData[indexId].coord.lat}\u00b0`}</Title>
                                     </Card>
-                                    <Card style={{ margin: 5, padding: 8 }}>
+                                    <Card style={{ marginBottom: 5, padding: 8 }}>
                                         <Title style={{ color: "#00aaff" }}>{`${fieldItems[3]} - ${allData[indexId].coord.lon}\u00b0`}</Title>
                                     </Card>
                                 </>
@@ -86,7 +87,7 @@ export default Archive = () => {
                         <Button
                             mode="contained"
                             theme={{ colors: { primary: "#00aaff" } }}
-                            style={{ margin: 45 }}
+                            style={{ margin: 35 }}
                             onPress={() => setShow(false)}
                         >
                             <Text style={{ color: "white" }}>Close</Text>
@@ -101,3 +102,6 @@ export default Archive = () => {
     );
 
 }
+
+export default Archive;
+

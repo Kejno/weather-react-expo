@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Appbar, Title } from 'react-native-paper';
-export default Header = (props) => {
+const Header = (props) => {
 
     return (
         <Appbar.Header
@@ -19,3 +19,5 @@ export default Header = (props) => {
     );
 
 }
+
+export default Header;
